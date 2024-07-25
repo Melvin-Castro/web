@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Editar Permisos para {{ usuario.nombre }} {{ usuario.apellido }}</h1>
+<form method="POST">
+    {% csrf_token %}
+    <label>
+        <input type="checkbox" name="pedidos_pen_CUD" {% if permisos.pedidos_pen_CUD %}checked{% endif %}> Pedidos Pendientes CUD
+    </label>
+    <br>
+    <label>
+        <input type="checkbox" name="pedidos_pen_S" {% if permisos.pedidos_pen_S %}checked{% endif %}> Pedidos Pendientes S
+    </label>
+    <br>
+    <label>
+        <input type="checkbox" name="pedidos_rec_G" {% if permisos.pedidos_rec_G %}checked{% endif %}> Pedidos Recibidos G
+    </label>
+    <br>
+    <label>
+        <input type="checkbox" name="inventario_cat_CUD" {% if permisos.inventario_cat_CUD %}checked{% endif %}> Inventario Categoría CUD
+    </label>
+    <br>
+    <label>
+        <input type="checkbox" name="inventario_pro_CUD" {% if permisos.inventario_pro_CUD %}checked{% endif %}> Inventario Producto CUD
+    </label>
+    <br>
+    <label>
+        <input type="checkbox" name="inventario_pro_G" {% if permisos.inventario_pro_G %}checked{% endif %}> Inventario Producto G
+    </label>
+    <br>
+    <label>
+        <input type="checkbox" name="ventas_CD" {% if permisos.ventas_CD %}checked{% endif %}> Ventas CD
+    </label>
+    <br>
+    <label>
+        <input type="checkbox" name="panel_admin" {% if permisos.panel_admin %}checked{% endif %}> Panel Admin
+    </label>
+    <br>
+    <button type="submit">Guardar</button>
+</form>
+<a href="{% url 'lista_usuarios' %}">Cancelar</a>
+{% endblock %}

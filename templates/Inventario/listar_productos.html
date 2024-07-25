@@ -1,0 +1,269 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title%}
+Productos
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/customDailog/listProducts.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<p class="page_tittle">
+  Gestión de Productos
+</p>
+<div class="form_filter" id="my_form_filter">
+  <label for="categoryFilterPro">Categoría: </label>
+  <select name="categories" id="categoryFilterPro">
+      <option value="">Todos</option>
+      {% for categoria in categorias %}
+      <option value="{{ categoria.nombre }}">{{ categoria.nombre }}</option>
+      {% endfor %}
+  </select>
+
+  <button class="addButton" id="openDiaInvProAdd">
+      <i class="fas fa-plus-circle"></i>
+      <span>Agregar producto</span>
+  </button>
+  <form id="exportarForm" method="post" action="{% url 'exportar_productos_excel' %}">
+    {% csrf_token %}
+    <input type="hidden" name="producto_ids" id="productoIds">
+    <button class="excelButton" id="excelButton">
+      <i class="fas fa-file-excel"></i>
+      <span>Crear excel</span>
+    </button>
+  </form>
+</div>
+  
+  <!--<form id="form_filtro_productos" method="get" action="{% url 'listar_productos' %}">
+    {% csrf_token %}
+    <select name="filtro_categoria" id="filtro_categoria">
+      <option value="">Categorias</option>
+      {% for categoria in categorias %}
+      <option value="{{ categoria.id }}">
+        {{categoria.nombre}}
+      </option>
+      {% endfor %}
+    </select>
+
+    <label for="filtro_precio_min">Precio desde: </label>
+    <input type="number" name="filtro_precio_min" id="filtro_precio_min">
+    <label for="filtro_precio_min"> Hasta: </label>
+    <input type="number" name="filtro_precio_max" id="filtro_precio_max">
+
+    <select name="filtro_estado_stock" id="filtro_estado_stock">
+      <option value="">Todos los estados</option>
+      <option value="bajo">Bajo</option>
+      <option value="normal">Normal</option>
+      <option value="alto">Alto</option>
+    </select>
+
+    <label for="filtro_mostrar_todos">Mostrar Todos</label>
+    <input type="checkbox" name="filtro_mostrar_todos" id="filtro_mostrar_todos" {% if mostrar_todos %}checked{% endif %}>
+    <button type="submit">Filtrar</button>
+  </form>-->
+
+<table id="tablePro" class="table display">
+  <thead>
+    <tr>
+      <th># Producto</th>
+      <th>Categoria</th>
+      <th>Nombre</th>
+      <th>Stock (Unid.)</th>
+      <th>Stock estado</th>
+      <th>Precio de Compra</th>
+      <th>Precio de Venta</th>
+      <th>Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for producto in productos %}
+    <tr data-producto-id="{{ producto.id }}">
+      <td>{{ producto.id }}</td>
+      <td>
+        <ul>
+          {% for categoria in producto.categorias.all %}
+          <li>{{categoria}}</li>
+          {% endfor%}
+        </ul>
+      </td>
+      <td>{{ producto.nombre }}</td>
+      <td>{{ producto.stock }}</td>
+      <td>
+        <div class="flex_cont">
+          
+            <div class="estado_stock 
+            {% if producto.estado_stock == 'alto' %}
+            alto
+            {% elif producto.estado_stock == 'normal' %}
+            normal
+            {% elif producto.estado_stock == 'bajo' %}
+            bajo
+            {% endif %}
+            ">
+              <span>{{ producto.estado_stock }}</span>
+            </div>
+        </div> 
+      </td>
+      <td> S/. {{ producto.precio_compra }}</td>
+      <td> S/. {{ producto.precio_venta}}</td>
+      <td>
+        <div class="flex_cont">
+          <button type="button"class="deleteInvPro-button delete_button"
+          data-producto-id="{{ producto.id }}">
+          <i class="fas fa-trash"></i>
+          </button>
+          <!-- Form oculto para eliminar productos-->
+          <form method="POST" action="" id="deleteProForm">
+            {% csrf_token %}
+          </form>
+          <!-- Fin Form oculto para eliminar-->
+          <div class="separator"></div>
+          <!-- BUTTONS PARA EDITAR -->
+          <button type="button" class="openDiaInvProEdit edit_button"
+          data-producto-id="{{ producto.id }}"
+          data-producto-nombre="{{ producto.nombre }}"
+          data-producto-categorias="{% for categoria in producto.categorias.all %}{{ categoria.id }}{% if not forloop.last %},{% endif %}{% endfor %}"
+          data-producto-proveedor="{{ producto.proveedor.id }}"
+          data-producto-stock="{{ producto.stock }}"
+          data-producto-precio-C="{{ producto.precio_compra }}"
+          data-producto-precio-V="{{ producto.precio_venta }}"
+          data-producto-stock-min="{{ producto.stock_min }}"
+          data-producto-stock-max="{{ producto.stock_max }}">
+          <i class="fas fa-pencil-alt"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+  <script>
+    document.getElementById('exportarForm').addEventListener('submit', function (event) {
+      var productoIds = [];
+      var rows = document.querySelectorAll('tbody tr');
+      rows.forEach(function (row) {
+        productoIds.push(row.getAttribute('data-producto-id'));
+      });
+      document.getElementById('productoIds').value = productoIds.join(',');
+    });
+  </script>
+  <!-- Dialogs-->
+  <!-- Crear Productos -->
+  <dialog id="DiaInvProAdd">
+    <div class="top_bar_myDialog" style="width: 600px;">
+      <span class="tittle">Agregar Producto</span>
+      <i class="fas fa-times close_myDialog" id="closeDiaInvProAdd"></i>
+    </div>
+    <div class="content_myDialog" style="width: 600px;height: 64.2vh;">
+      <!-- Form crear producto -->
+      <form method="post" action="{% url 'crear_producto' %}">
+        {% csrf_token %}
+        <label for="nombre_Prod_C">Nombre:</label>
+        <input type="text" id="nombre_Prod_C" name="nombre_Prod_C" required><br>
+  
+        <label for="categorias_Prod_C">Categorías:</label>
+        <select id="categorias_Prod_C" name="categorias_Prod_C" multiple required>
+          {% for categoria in categorias %}
+          <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+          {% endfor %}
+        </select>
+  
+        <label for="proveedor_Prod_C">Proveedor:</label>
+        <select id="proveedor_Prod_C" name="proveedor_Prod_C" required>
+          <option>Seleccionar Proveedor</option>
+          {% for proveedor in proveedores %}
+          <option value="{{ proveedor.id }}">{{ proveedor.nombre }}</option>
+          {% endfor %}
+        </select>
+  
+        <label for="stock_Prod_C">Stock:</label>
+        <input type="number" id="stock_Prod_C" name="stock_Prod_C" min="0" required><br>
+  
+        <label for="precio_compra_Prod_C">Precio Compra:</label>
+        <input type="number" id="precio_compra_Prod_C" name="precio_compra_Prod_C" min="0" step="0.01" required><br>
+  
+        <label for="precio_venta_Prod_C">Precio Venta:</label>
+        <input type="number" id="precio_venta_Prod_C" name="precio_venta_Prod_C" min="0" step="0.01" required><br>
+  
+        <label for="stock_min_Prod_C">Stock Mínimo:</label>
+        <input type="number" id="stock_min_Prod_C" name="stock_min_Prod_C" min="0" value="10" required><br>
+  
+        <label for="stock_max_Prod_C">Stock Máximo:</label>
+        <input type="number" id="stock_max_Prod_C" name="stock_max_Prod_C" min="0" value="20" required><br>
+  
+        <div class="buttons_container_add_form buttons_container" id="cancelDiaInvProAdd">
+          <button type="button">Cancelar</button>
+          <button type="submit">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+  
+  <!-- DIALOG EDITAR PRODUCTO -->
+  <dialog id="DiaInvProEdit">
+    <div class="top_bar_myDialog" style="width: 600px;">
+      <span class="tittle">Editar Producto</span>
+      <i class="fas fa-times close_myDialog" id="closeDiaInvProEdit"></i>
+    </div>
+    <div class="content_myDialog" style="width: 600px;height: 64.2vh;">
+      <form id="editarPro__Form" method="post" action="" style="width: 100%; height: 100%;">
+        {% csrf_token %}
+        <label for="nombre_Prod_E">Nombre:</label>
+        <input type="text" id="nombre_Prod_E" name="nombre_Prod_E" required><br>
+  
+        <label for="categorias_Prod_E">Categorías:</label>
+        <select id="categorias_Prod_E" name="categorias_Prod_E" multiple required>
+          {% for categoria in categorias %}
+          <option value="{{ categoria.id }}" {% if categoria in producto.categorias.all %}selected{% endif %}>
+            {{ categoria.nombre }}
+          </option>
+          {% endfor %}
+        </select><br>
+  
+        <label for="proveedor_Prod_E">Proveedor:</label>
+        <select id="proveedor_Prod_E" name="proveedor_Prod_E" required>
+          {% for proveedor in proveedores %}
+          <option value="{{ proveedor.id }}">
+            {{ proveedor.nombre }}
+          </option>
+          {% endfor %}
+        </select><br>
+  
+        <label for="stock_Prod_E">Stock:</label>
+        <input type="number" id="stock_Prod_E" name="stock_Prod_E" required><br>
+  
+        <label for="precio_compra_Prod_E">Precio Compra:</label>
+        <input type="number" id="precio_compra_Prod_E" name="precio_compra_Prod_E" step="0.01"
+          precioC="{{ producto.precio_compra }}" required><br>
+  
+        <label for="precio_venta_Prod_E">Precio Venta:</label>
+        <input type="number" id="precio_venta_Prod_E" name="precio_venta_Prod_E" step="0.01"
+          precioV="{{ producto.precio_venta }}" required><br>
+  
+        <label for="stock_min_Prod_E">Stock Mínimo:</label>
+        <input type="number" id="stock_min_Prod_E" name="stock_min_Prod_E" required><br>
+  
+        <label for="stock_max_Prod_E">Stock Máximo:</label>
+        <input type="number" id="stock_max_Prod_E" name="stock_max_Prod_E" required><br>
+  
+        <div class="buttons_container_edit_form buttons_container ovrt" id="cancelDiaInvProEdit">
+          <button type="button" id="cancelButtonProEdit">Cancelar</button>
+          <button type="submit">
+            <i class="fas fa-pencil-alt"></i>
+            <span>Editar</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+  
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/Inventario/dialogInventarioProducto.js' %}"></script>
+{% endblock %}

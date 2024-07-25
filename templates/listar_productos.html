@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title%}
+Lista de Productos
+{% endblock %}
+{% block content %}
+<div class="content">
+  <a href="{% url 'home' %}"></a>
+  <h1>Lista de Productos</h1>
+  <table>
+    <thead>
+      <tr>
+        <th># Producto</th>
+        <th>Categoria</th>
+        <th>Nombre</th>
+        <th>Stock</th>
+        <th>Precio de Compra</th>
+        <th>Precio de Venta</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for producto in productos %}
+      <tr>
+        <td>{{ producto.id }}</td>
+        <td>{{ producto.categorias }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.stock }}</td>
+        <td>{{ producto.precio_compra }}</td>
+        <td>{{ producto.precio_venta}}</td>
+        <td> 
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{% url 'crear_producto' %}">Crear Producto</a>
+</div>
+{% endblock %}

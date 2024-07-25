@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+{% block content %}
+<p class="hi_user">
+  Bienvenido <strong>{{ user.username |upper }}</strong>
+</p>
+<div class="alerts">
+    <div class="left">
+        <div class="head_alerts">
+            <div class="normal_alerts">
+                <i class="fas fa-truck"></i>
+                <span>Pedidos hoy:</span>
+                <strong>1</strong>                <!-- INSERT VALUE -->
+            </div>
+            <div class="normal_alerts">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>Alerta inventario:</span>
+                <strong>0</strong>                <!-- INSERT VALUE -->                
+            </div>
+            <div class="normal_alerts">
+                <i class="fas fa-receipt"></i>
+                <span>Ventas de hoy:</span>
+                <strong>13</strong>                <!-- INSERT VALUE -->
+            </div>
+        </div>
+        <div class="foot">
+            <div class="top__foot__bar">
+                <span class="tittle">Productos más vendidos.</span>
+                <label for="categories">Mostrar productos: </label>
+                <select name="categories" id="categories">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="Todos">Todos</option>
+                </select>
+            </div>
+            <div class="foot__content">
+              <div class="chart_container">
+                <canvas id="myChart"></canvas>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="money_alerts">
+            <i class="fas fa-money-bill-wave"></i>
+            <span>Ingresos Brutos:</span>
+            <strong>S/. 500.00</strong>                <!-- INSERT VALUE -->
+        </div>
+        <div class="money_alerts">
+            <i class="fas fa-money-bill-wave-alt"></i>
+            <span>Ingresos Netos:</span>
+            <strong>S/. 1500.00</strong>                <!-- INSERT VALUE -->
+        </div>
+    </div>
+</div>
+<div class="graphic">
+    <div class="graphic_container">
+        <div class="graphic__top__bar">
+            <span class="tittle">Línea de tiempo de ventas.</span>
+            <div class="options_graphic">
+                <label for="lineaVentasDesde">Desde: </label>
+                <select name="lineaVentasDesde" id="lineaVentasDesde">
+                  <option value="1">Ene</option>
+                  <option value="2">Feb</option>
+                  <option value="3">Mar</option>
+                  <option value="4">Abr</option>
+                  <option value="5">May</option>
+                  <option value="6">Jun</option>
+                  <option value="7">Jul</option>
+                </select>
+                <label for="lineaVentasHasta">Hasta: </label>
+                <select name="lineaVentasHasta" id="lineaVentasHasta">
+                  <option value="1">Ene</option>
+                  <option value="2">Feb</option>
+                  <option value="3">Mar</option>
+                  <option value="4">Abr</option>
+                  <option value="5">May</option>
+                  <option value="6">Jun</option>
+                  <option value="7">Jul</option>
+                </select>
+            </div>
+        </div>
+        <div class="graphic__content">
+          <div class="chart_container">
+            <canvas id="myChart2"></canvas>
+            <div class="separator"></div>
+            <canvas id="myChart3"></canvas>
+          </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/char.js' %}"></script>
+<script src="{% static 'js/swall/dashboard.js' %}"></script>
+{% endblock %}

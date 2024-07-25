@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+Lista de Proveedores
+{% endblock %}
+
+{% block content %}
+<h2>Registrar Proveedores</h2>
+<div class="content">
+    <a href="{% url 'home' %}">Inicio</a>
+    <form action="{% url 'crear_proveedores' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-group">
+            <input type="submit" class="btn btn-success btn-block text-white" value="Guardar">
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Editar Categoría - {{ categoria.nombre }}</h1>
+<form method="post">
+    {% csrf_token %}
+
+    <label for="nombre_Cat_E">Nombre:</label>
+    <input type="text" id="nombre_Cat_E" name="nombre_Cat_E" value="{{ categoria.nombre }}" required><br>
+
+    <label for="descripcion_Cat_E">Descripción:</label>
+    <textarea id="descripcion_Cat_E" name="descripcion_Cat_E" rows="4" cols="50">{{ categoria.descripcion }}</textarea><br>
+
+    <button type="submit">Guardar Cambios</button>
+</form>
+<a href="{% url 'listar_categorias' %}">Volver a la lista de categorías</a>
+{% endblock %}

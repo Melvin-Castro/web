@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Crear Venta</h1>
+  <form method="post">
+        {% csrf_token %}
+        
+        <label for="producto_Prod_C">Producto:</label>
+        <select id="producto_Prod_C" name="producto_Prod_C" multiple required>
+          <option value="">Selecciona un producto</option>
+          {% for producto in productos %}
+          <option value="{{ producto.id }}">{{ producto.nombre }}</option>
+          {% endfor %}
+        </select><br>
+        
+        <label for="unidades-input">Cantidad:</label>
+        <input type="number" id="unidades-input" name="cantidad" class="form-control" min="1" value="1" required><br>
+        
+        <label for="fecha-venta">Fecha de Venta:</label>
+        <input type="date" id="fecha-venta" name="fecha" class="form-control" required><br>
+        
+        <label for="nombre-vendedor">Nombre del Vendedor:</label>
+        <input type="text" id="nombre-vendedor" name="vendedor" class="form-control" required><br>
+        
+        <label for="total-venta">Total:</label>
+        <input type="number" id="total-venta" name="total" class="form-control" min="0" step="0.01" required><br>
+        
+        <button type="submit" class="btn btn-primary">Guardar</button>
+
+      </form>
+      <a href="{% url 'ventas_list' %}">Volver a la lista</a>
+
+{% endblock %}

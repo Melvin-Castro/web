@@ -1,0 +1,31 @@
+<!-- Contenido de detalle_venta.html -->
+<p>Número de Venta: {{ venta.id }}</p>
+<p>Fecha de Creación: {{ venta.fecha_creacion|date:"Y-m-d" }}</p>
+<p>Vendedor: {{ venta.vendedor.username }}</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th># Producto</th>
+            <th>Nombre Producto</th>
+            <th>Precio Unitario</th>
+            <th>Unidades</th>
+            <th>Importe</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in venta.items %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ item.producto.nombre }}</td>
+            <td>{{ item.precio_unitario }}</td>
+            <td>{{ item.unidades }}</td>
+            <td>{{ item.importe }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="4" class="text-right"><strong>Total</strong></td>
+            <td>{{ venta.total }}</td>
+        </tr>
+    </tbody>
+</table>

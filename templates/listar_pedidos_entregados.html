@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+Lista de Pedidos
+{% endblock %}
+
+{% block content %}
+<h2>Lista de Pedidos</h2>
+<div class="content">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <!--<th>Categoria</th>-->
+                <th>Proveedores</th>
+                <th>Productos</th>
+                <th>Cantidad</th>
+                <th>Precio Compra</th>
+                <th>Costo Total</th>
+                <th>Estado</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pedido in pedidos_entregados %}
+            <tr>
+                <td>{{ pedido.id }}</td>
+                <td>{{ pedido.proveedor }}</td>
+                <td>
+                    <ul>
+                        {% for producto in pedido.productos.all %}
+                        <li>{{ producto.nombre }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>{{ pedido.cantidad }}</td>
+                <td>{{ pedido.precio_unitario }}</td>
+                <td>{{ pedido.total }}</td>
+                <td>{{ pedido.estado }}</td>
+                <td>{{ pedido.fecha_pedido }}</td>
+                <td>{{ pedido.hora }}</td>
+                <td>
+                    <form method="post" action="{% url 'listar_pedidos' %}">
+                        {% csrf_token %}
+                        {{ form.estado }}
+                        <input type="hidden" name="pedido_id" value="{{ pedido.id }}">
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</div>
+{% endblock %}

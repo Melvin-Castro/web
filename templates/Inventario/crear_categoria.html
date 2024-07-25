@@ -1,0 +1,18 @@
+<!-- templates/inventario/crear_categoria.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Crear Categoría</h1>
+<form method="post">
+    {% csrf_token %}
+
+    <label for="nombre_Cat_C">Nombre:</label>
+    <input type="text" id="nombre_Cat_C" name="nombre_Cat_C" required><br>
+
+    <label for="descripcion_Cat_C">Descripción:</label>
+    <textarea id="descripcion_Cat_C" name="descripcion_Cat_C" rows="4" cols="50"></textarea><br>
+
+    <button type="submit">Guardar</button>
+</form>
+<a href="{% url 'listar_categorias' %}">Volver a la lista de categorías</a>
+{% endblock %}

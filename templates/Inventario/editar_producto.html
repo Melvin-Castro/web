@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Editar Producto</h1>
+<form method="post">
+    {% csrf_token %}
+
+    <label for="nombre_Prod_E">Nombre:</label>
+    <input type="text" id="nombre_Prod_E" name="nombre_Prod_E" value="{{ producto.nombre }}" required><br>
+
+    <label for="categorias_Prod_E">Categorías:</label>
+    <select id="categorias_Prod_E" name="categorias_Prod_E" multiple required>
+        {% for categoria in categorias %}
+            <option value="{{ categoria.id }}" {% if categoria in producto.categorias.all %}selected{% endif %}>
+                {{ categoria.nombre }}
+            </option>
+        {% endfor %}
+    </select><br>
+
+    <label for="proveedor_Prod_E">Proveedor:</label>
+    <select id="proveedor_Prod_E" name="proveedor_Prod_E" required>
+        {% for proveedor in proveedores %}
+            <option value="{{ proveedor.id }}" {% if proveedor == producto.proveedor %}selected{% endif %}>
+                {{ proveedor.nombre }}
+            </option>
+        {% endfor %}
+    </select><br>
+
+    <label for="stock_Prod_E">Stock:</label>
+    <input type="number" id="stock_Prod_E" name="stock_Prod_E" value="{{ producto.stock }}" required><br>
+
+    <label for="precio_compra_Prod_E">Precio Compra:</label>
+    <input type="number" id="precio_compra_Prod_E" name="precio_compra_Prod_E" step="0.01" precioC="{{ producto.precio_compra }}" required><br>
+
+    <label for="precio_venta_Prod_E">Precio Venta:</label>
+    <input type="number" id="precio_venta_Prod_E" name="precio_venta_Prod_E" step="0.01" precioV="{{ producto.precio_venta }}" required><br>
+
+    <label for="stock_min_Prod_E">Stock Mínimo:</label>
+    <input type="number" id="stock_min_Prod_E" name="stock_min_Prod_E" value="{{ producto.stock_min }}" required><br>
+
+    <label for="stock_max_Prod_E">Stock Máximo:</label>
+    <input type="number" id="stock_max_Prod_E" name="stock_max_Prod_E" value="{{ producto.stock_max }}" required><br>
+
+    <button type="submit">Guardar</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            console.log('DOM fully loaded and parsed');
+            let ipc = document.getElementById("precio_compra_Prod_E");
+            let ipv = document.getElementById("precio_venta_Prod_E");
+            let pc = ipc.getAttribute('precioC');
+            let pv = ipv.getAttribute('precioV');
+            pc = pc.replace(',', '.');
+            pv = pv.replace(',', '.');
+            console.log(pc);
+            console.log(pv);
+            ipc.value = pc;
+            ipv.value = pv;
+        });
+    </script>
+</form>
+<a href="{% url 'listar_productos' %}">Volver a la lista</a>
+{% endblock %}
