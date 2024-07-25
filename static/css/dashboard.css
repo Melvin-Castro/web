@@ -1,0 +1,208 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+.hi_user {
+    font-size: 45px;
+    width: 100%;
+    color: #00044a;
+    width: 100%;
+    border-bottom: 2px solid #00044a;
+    padding-left: 16px;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.alerts {
+    width: 100%;
+    height: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.alerts .left {
+    flex-grow: 1; 
+    width: 64.3%;
+    height: 100%;
+}
+.head_alerts {
+    width: 100%;
+    height: 35%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.left .head_alerts .normal_alerts{
+    width: 32%;
+    height: 100%;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.head_alerts  .normal_alerts i {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+.head_alerts  .normal_alerts span {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.head_alerts  .normal_alerts strong {
+    font-size: 35px;
+}
+.head_alerts .normal_alerts:nth-child(1) > i,
+.head_alerts .normal_alerts:nth-child(1) > span {
+    color: rgb(255, 187, 0);
+}
+
+.head_alerts .normal_alerts:nth-child(2) > i,
+.head_alerts .normal_alerts:nth-child(2) > span {
+    color: rgb(192, 18, 18);
+}
+
+.head_alerts .normal_alerts:nth-child(3) > i,
+.head_alerts .normal_alerts:nth-child(3) > span {
+    color: rgb(104, 207, 6);
+}
+.foot {
+    margin-top: 20px;
+    width: 100%;
+    height: 61.5%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 15px;
+}
+.foot .top__foot__bar,
+.graphic_container .graphic__top__bar {
+    width: 100%;
+    height: 15%;
+    background-color: #00044a;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding-left: 18px;
+    padding-right: 18px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+.top__foot__bar label,
+.graphic__top__bar .options_graphic {
+    margin-left: auto;
+}
+.top__foot__bar select,
+.graphic__top__bar select {
+    margin-left: 10px;
+    width: 160px;
+    padding: 7px;
+    border-radius: 5px;
+    color: #00044a;
+}
+.graphic__top__bar select {
+    margin-right: 15px;
+}
+.graphic__top__bar select:last-child{
+    margin-right: 0;
+}
+.top__foot__bar select:focus,
+.graphic__top__bar select:focus {
+    outline: none;
+    border-color: transparent;
+    background-color: #f0f0f0;
+}
+.top__foot__bar option,
+.graphic__top__bar option{
+    color: #00044a;
+    padding: 17px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    border: none;
+    outline: none;
+}
+.foot__content {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.foot__content .chart_container {
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+}
+.alerts .right {
+    width: 34.3%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 17px;
+}
+.alerts .right .money_alerts{
+    width: 100%;
+    height: 48%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.money_alerts:nth-child(1) {
+    margin-bottom: 24px;
+}
+.money_alerts i {
+    font-size: 125px;
+}
+.money_alerts strong {
+    margin-top: 15px;
+    font-size: 40px;
+}
+.graphic {
+    width: 100%;
+    height: 60%;
+    padding: 20px;
+    padding-top: 0;
+    display: flex;
+}
+.graphic_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.graphic_container .graphic__content {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.graphic__content .chart_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 19px;
+}
+.chart_container .separator {
+    width: 4%;
+    height: 100%;
+} 

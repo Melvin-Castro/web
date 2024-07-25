@@ -1,0 +1,146 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+@import "https://unpkg.com/open-props";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-top: 25px !important;
+    margin-bottom: 10px !important;
+    background-color: #ffffff;
+}
+th {
+    padding: 12px;
+    text-align: center !important;
+    border-bottom: 2px solid rgb(156, 156, 156);
+    border-top: 2px solid rgb(156, 156, 156);
+    background-color: #00044a;
+    color: #ffffff;
+    font-weight: 500 !important;
+}
+td {
+    text-align: left !important;
+    border-bottom: 0.5px solid rgba(156, 156, 156, 0.589);
+    font-weight: 400;
+    font-size: 15px;
+}
+td.permisos {
+    text-align: center !important;
+}
+td:last-child {
+    box-sizing: border-box;
+}
+.flex_cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+td:nth-child(2) ul {
+    list-style-type: none;
+}
+td:nth-child(2) li {
+    margin-bottom: 5px;
+}
+.separator {
+    width: 10%;
+    height: 100%;
+}
+.delete_button,
+.edit_button,
+.openPermisos {
+    width: 40px;
+    height: 30px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.delete_button i,
+.edit_button i,
+.openPermisos i {
+    color: #ffffff;
+}
+.delete_button {
+    background-color: rgb(192, 18, 18);
+}
+.edit_button {
+    background-color: rgb(255, 187, 0);
+}
+.openPermisos {
+    background-color: #00BFFF;
+}
+.delete_button:hover,
+.edit_button:hover,
+.openPermisos:hover {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.delete_button:hover i,
+.edit_button:hover i,
+.openPermisos:hover i {
+    color: #00044a;
+}
+.dt-layout-row {
+    font-family: "Inter", sans-serif !important;
+    color: #00044a !important;
+    font-weight: 400;
+    font-size: 15px !important;
+}
+.dt-input {
+    width: 120px;
+    background-color: #f5f5f5 !important;
+    border-color: #00044a !important;
+    border-radius: 5px !important;
+    padding: 7px !important;
+    font-size: 13px !important;
+    cursor: pointer !important;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+    transition: all 0.3s !important;
+}
+.dt-input:hover {
+    background-color: #00044a13 !important;
+}
+.dt-input:nth-child(2):focus {
+    background-color: #00044a13 !important;
+}
+.dt-input:nth-child(2) {
+    width: 250px;
+}
+.dt-info {
+    color: #00044a !important;
+    font-weight: 400 !important;
+    font-size: 12px;
+}
+.dt-paging-button {
+    background-color: #00044a13 !important;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+    color: #ffffff !important;
+}
+.dt-paging-button.current:hover,
+.dt-paging-button:hover {
+    background-color: #00044a38 !important;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+    color: #ffffff !important;
+}
+.dt-paging-button:disabled {
+    cursor: not-allowed !important;
+}
+.dt-paging-button.current {
+    background-color: #00044a38 !important;
+    border: none !important;
+}

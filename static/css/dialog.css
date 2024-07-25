@@ -1,0 +1,82 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+@import "https://unpkg.com/open-props";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+dialog {
+    display: block;
+    inset: 0;
+    z-index: var(--layer-important);
+    max-inline-size: 100vw; /* Ancho máximo del 100% de la ventana */
+    max-block-size: 100vh; /* Altura máxima del 100% de la ventana */
+    overflow: hidden;
+    transition: opacity .5s;
+    animation: var(--animation-scale-down) forwards;
+    animation-timing-function: var(--ease-squish-3);
+    border-radius: 0.5rem;
+    padding: 0;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+}
+dialog[open] {
+    animation: var(--animation-fade-in) 0.5s forwards;
+}
+dialog:not([open]) {
+    pointer-events: none;
+    opacity: 0;
+}
+dialog::backdrop {
+  backdrop-filter: blur(0.25rem);
+}
+/*Dialog Genérico*/
+.top_bar_myDialog {
+    height: 4.44vh;
+    background-color: #00044a;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.top_bar_myDialog .tittle {
+    flex: 1;
+    text-align: center;
+    font-size: 1rem;
+}
+.top_bar_myDialog .close_myDialog {
+    cursor: pointer;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+}
+.top_bar_myDialog {
+    height: 4.44vh;
+    background-color: #00044a;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.content_myDialog {
+    width: 720px;
+    height: 460px;
+    padding: 1rem;
+    overflow: auto;
+}
+.content_myDialog::-webkit-scrollbar {
+    width: 13px;
+}
+.content_myDialog::-webkit-scrollbar-thumb {
+    background-color: #00044a; 
+}
+.content_myDialog::-webkit-scrollbar-track {
+    background-color: #00044a6e; 
+}

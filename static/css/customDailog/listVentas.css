@@ -1,0 +1,108 @@
+.content_myDialog label{
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #00044a;
+    font-weight: 600;
+}
+.content_myDialog input,
+.content_myDialog select {
+    width: 100%; 
+    padding: 0.5rem; 
+    box-sizing: border-box;
+    border: none;
+    border: 1px solid #00044a9a;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    color: #00044a;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.content_myDialog input:hover,
+.content_myDialog select:hover {
+    background-color: #00044a13 !important;
+}
+.content_myDialog input:focus,
+.content_myDialog select:focus {
+    outline: none;
+    background-color: #00044a13 !important;
+}
+.buttons_container {
+    width: 100%;
+    height: 4.5vh;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.buttons_container button {
+    border: none;
+    width: 218px;
+    height: 75%;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: all 0.3s;
+}
+.buttons_container button:nth-child(1) {
+    background-color: rgb(192, 18, 18);
+}
+.buttons_container button:last-child {
+    background-color: #179b2d;
+}
+.buttons_container.ovrt button:last-child {
+    background-color: rgb(255, 187, 0);
+}
+.buttons_container button:hover,
+.buttons_container.ovrt button:hover,
+.btn button:hover {
+    background-color: #ffffff;
+    color: #00044a;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.content_myDialog input[type=number]::-webkit-outer-spin-button,
+.content_myDialog input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.bar_add  {
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    flex-direction: row;
+}
+.ipt {
+    width: 60%;
+    padding: 8px;
+}
+.ipt:nth-child(2){
+    width: 20%;
+}
+.ipt:nth-child(2) input{
+    padding: 9px;
+}
+.btn {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn button {
+    width: 90%;
+    height: 57%;
+    margin-top: 23px;
+    border: none;
+    background-color: #179b2d;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.openList {
+    background-color: #909090;
+}

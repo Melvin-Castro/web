@@ -1,0 +1,163 @@
+body {
+    background-color: #CECECE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+div.login-container {
+    background-color: #00044a;
+    width: 55%;
+    height: 45%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 10px;
+}
+
+div.login-container div.logo-container {
+    width: 40%;
+    height: 100%;
+
+    background-color: #00044a;
+}
+
+div.login-container div.form-container {
+    width: 60%;
+    height: 100%;
+
+    background-color: white;
+}
+
+div.login-container div.form-container form {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div.login-container div.form-container div.title-container{
+    width: 100%;
+    height: 35%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+div.login-container div.form-container h1.tittle-form{
+    color: #00044a;
+    font-family: 'Roboto', sans-serif;
+}
+
+div.login-container div.form-container div.title-container hr.line-form{
+    background-color: #00044a;
+    width: 95%;
+    height: 3px;
+}
+
+div.login-container div.form-container div.content-container{
+    width: 100%;
+    height: 40%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div.login-container div.form-container div.content-container div {
+    width: 95%;
+    height: 50%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+div.login-container div.form-container div.content-container div i{
+    color: #00044a;
+    font-size: 18px;
+}
+
+div.login-container div.form-container div.content-container div input.ipt-form{
+    color: #00044a;
+
+    width: 90%;
+    height: 30%;
+
+    padding: 5px;
+    border: none;
+    border-bottom: 3px solid #00044a;
+    transition: border-bottom 0.2s ease-in-out; 
+    transition: background-color 0.2s ease; 
+
+}
+
+div.login-container div.form-container div.content-container div input#password {
+    width: 84%;
+    margin-left: 1px;
+}
+
+div.login-container div.form-container div.content-container div input.ipt-form:focus{
+    background-color: #CECECE;
+
+    width: 90%;
+    height: 30%;
+
+    padding: 5px;
+
+    border: none;
+    border-bottom: 3px solid #313131;
+    outline: none
+}
+
+div.login-container div.form-container div.button-container {
+    color: #00044a;
+    width: 90%;
+    height: 25%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.login-container div.form-container div.button-container button {
+    width: 40%;
+    height: 50%;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: white;
+    background-color: #00044a;
+    border: none;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+
+    transition: color 0.2s ease-in-out; 
+    transition: background-color 0.2s ease; 
+}
+
+div.login-container div.form-container div.button-container button:hover {
+    color: #00044a;
+    background-color: white;
+}
+
+div.login-container div.form-container div.content-container  i#eyePass {
+    transition: color 0.2s ease-in-out; 
+}
+
+div.login-container div.form-container div.content-container  i#eyePass:hover {
+    color: rgb(255, 204, 0);
+    cursor: pointer;
+}
+

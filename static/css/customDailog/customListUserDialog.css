@@ -1,0 +1,260 @@
+dialog#AddForm .top_add_form_bar,
+dialog#EditForm .top_edit_form_bar { /* DIALOG EDIT*/
+    width: 720px;
+    height: 40px;
+    background-color: #00044a;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.top_add_form_bar span,
+.top_edit_form_bar span {
+    flex: 1;
+    text-align: center;
+    font-size: 1rem;
+}
+#closeAddForm, #closeEditForm {
+    cursor: pointer;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+}
+#closeAddForm:hover {
+    font-size: 1.4rem;
+    color: #f5f5f5;
+}
+.content_add_form {
+    width: 720px;
+    height: 460px;
+    padding: 1rem; 
+}
+.content_add_form label{
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #00044a;
+    font-weight: 600;
+}
+.content_add_form input, 
+.content_add_form select{
+    width: 100%; 
+    padding: 0.5rem; 
+    box-sizing: border-box;
+    border: none;
+    border: 1px solid #00044a9a;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    color: #00044a;
+    transition: all 0.3s;
+}
+.content_add_form input:hover, 
+.content_add_form select:hover{
+    background-color: #00044a13 !important;
+}
+.content_add_form input:focus,
+.content_add_form select:focus {
+    outline: none;
+    background-color: #00044a13 !important;
+}
+.content_add_form .buttons_container_add_form {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 10px;
+}
+.buttons_container_add_form button {
+    border: none;
+    /*color: #ffffff;*/
+    width: 220px;
+    height: 100%;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;    
+    transition: all 0.3s;
+}
+.buttons_container_add_form button:nth-child(1) {
+    background-color: rgb(192, 18, 18);
+}
+.buttons_container_add_form button:last-child {
+    background-color: #179b2d;
+}
+.buttons_container_add_form button:hover {
+    background-color: #ffffff;
+    color: #00044a;
+}
+/*==================*/
+.content_edit_form {
+    width: 720px;
+    height: 570px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+.content_edit_form form {
+    width: 100%;
+    height: 100%;
+}
+.tittle_edit {
+    color: #00044a;
+    font-weight: 400;
+    font-size: 15px;
+}
+.head_edit_inputs {
+    width: 100%;
+    height: 43%;
+    margin-bottom: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #00044a;
+}
+.head_edit_inputs label{
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #00044a;
+    font-weight: 600;
+}
+.head_edit_inputs input,
+.head_edit_inputs select {
+    width: 100%; 
+    padding: 0.5rem; 
+    box-sizing: border-box;
+    border: none;
+    border: 1px solid #00044a9a;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 18px;
+    color: #00044a;
+    transition: all 0.3s;
+    cursor: pointer;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.head_edit_inputs input:hover, 
+.head_edit_inputs select:hover{
+    background-color: #00044a13 !important;
+}
+.head_edit_inputs input:focus,
+.head_edit_inputs select:focus {
+    outline: none;
+    background-color: #00044a13 !important;
+}
+.head_edit_inputs .left,
+.head_edit_inputs .right {
+    width: 49%;
+    height: 100%;
+}
+.head_edit_inputs .left input:last-child,
+.head_edit_inputs .right select{
+    margin-bottom: 0px;
+}
+.foot_edit_inputs {
+    width: 100%;
+    height: 38%;
+    margin-bottom: 2%;
+    padding: 2%;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border-bottom: 1px solid #00044a;
+}
+.foot_edit_inputs input {
+    cursor: pointer;
+    margin-right: 1em;
+    width: 15px;
+    height: 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.foot_edit_inputs .left,
+.foot_edit_inputs .right {
+    padding-left: 2em;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    gap: 1.6em;
+    flex-direction: column;
+    color: #00044a;
+}
+.buttons_container_edit_form {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.buttons_container_edit_form button{
+    width: 220px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 400;
+    transition: all 0.3s;
+}
+.buttons_container_edit_form button i{
+    margin-right: 1em;
+}
+.buttons_container_edit_form button:first-child{
+    background-color: rgb(192, 18, 18);
+}
+.buttons_container_edit_form button:last-child{
+    background-color: rgb(255, 187, 0);
+}
+.buttons_container_edit_form button:hover{
+    background-color: #ffffff;
+    color: #00044a;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.content_myDialog.overwrite{
+   display: flex;
+   flex-direction: column;
+}
+.content_myDialog.overwrite .PermissionsRow{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #00044a;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 1px solid #00044a94;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 1em;
+}
+.content_myDialog.overwrite .PermissionsRow:last-child{
+    margin-bottom: 0em;
+}
+.PermissionsRow .confirm_estate {
+    width: 22px;
+    height: 22px;
+    color: white;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    text-transform: uppercase;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.PermissionsRow .enabled {
+   background-color: #179b2daf;
+}
+.PermissionsRow .disabled {
+    background-color: rgba(192, 18, 18, 0.795);
+}
